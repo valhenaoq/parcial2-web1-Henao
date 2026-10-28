@@ -12,12 +12,13 @@ export const pedirJSON = async (url) => {
   // fetch no lanza un error automáticamente cuando recibe HTTP 404 o 500.
   if (!respuesta.ok) {
     throw new Error(`HTTP ${respuesta.status}`);
-
+    };
+    
     const datos = await respuesta.json();
 
     return datos;
-  };
-  };
+  
+};
 
 // R1 · Usa pedirJSON y devuelve SOLO el array de episodios (no el objeto completo con info).
 export const obtenerEpisodios = async () => {

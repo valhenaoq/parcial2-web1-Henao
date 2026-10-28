@@ -22,11 +22,19 @@ const tarjetaHTML = (episodio) => {
 
 // R2 · Estado de carga y estado de error (modelos 3 y 4 de index.html).
 const mostrarCargando = () => {
-  // TODO
+  lista.innerHTML = `
+    <p class="col-span-full rounded-2xl bg-white p-8 text-center text-slate-500">Cargando episodios…</p>
+  `;
 };
 
 const mostrarError = (mensaje) => {
-  // TODO
+  lista.innerHTML = `
+    <div class="col-span-full rounded-2xl bg-rose-50 p-8 text-center text-rose-700">
+      <p>No se pudieron cargar los episodios (${mensaje}).</p>
+
+      <button type="button" id="btn-reintentar" class="mt-4 rounded-lg bg-rose-600 px-4 py-2 font-semibold text-white hover:bg-rose-700">Reintentar</button>
+    </div>
+  `;
 };
 
 // R3 + R4 + R5 · ESTADO → pantalla: filtra, pinta las tarjetas (o el estado vacío, modelo 5)
@@ -38,7 +46,19 @@ const render = () => {
 // R2 · Pide los episodios: muestra cargando; si todo sale bien guarda y pinta;
 // si falla, muestra el error con su botón Reintentar.
 const cargar = async () => {
-  // TODO
+  // R2 - PASO 4: Mostrar primero el estado de carga.
+  mostrarCargando();
+
+  try {
+    // R2 - PASO 5: Solicitar los episodios y guardar el resultado.
+    episodios = await obtenerEpisodios();
+
+    // R2 - PASO 6: Si la petición funciona, mostrar los episodios.
+    render();
+  } catch (error) {
+    // R2 - PASO 7: Si falla, mostrar el mensaje de error.
+    mostrarError(error.message);
+  }
 };
 
 // R4 · Eventos del buscador (input), del select (change) y del formulario (Enter NO recarga).
