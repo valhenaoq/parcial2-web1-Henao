@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Parcial 2 · Guía de episodios</title>
+  <!-- En el parcial Tailwind va por CDN para no depender de npm. En tu proyecto se usa la CLI. -->
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+</head>
+<body class="min-h-dvh bg-slate-100 text-slate-900">
+
+  <header class="bg-white shadow">
+    <div class="mx-auto max-w-5xl p-4">
+      <p class="text-xl font-bold text-indigo-600">Guía<span class="text-slate-900">Episodios</span></p>
+    </div>
+  </header>
+
+  <main class="mx-auto max-w-5xl p-4">
+    <h1 class="mt-4 text-3xl font-bold">Episodios de Rick and Morty</h1>
+    <p id="contador" class="mt-1 text-slate-500"></p>
+
+    <form id="form-filtros" class="my-6 flex flex-col gap-3 md:flex-row" role="search">
+      <label for="busqueda" class="sr-only">Buscar episodio por nombre</label>
+      <input id="busqueda" type="search" placeholder="Buscar por nombre…"
+             class="flex-1 rounded-lg border border-slate-300 bg-white px-3 py-2
+                    focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 focus:outline-none">
+      <label for="filtro-temporada" class="sr-only">Filtrar por temporada</label>
+      <select id="filtro-temporada"
+              class="rounded-lg border border-slate-300 bg-white px-3 py-2
+                     focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 focus:outline-none">
+        <option value="">Todas las temporadas</option>
+        <option value="S01">Temporada 1</option>
+        <option value="S02">Temporada 2</option>
+      </select>
+    </form>
+
+    <section id="lista" aria-live="polite" class="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
+      <!-- Vacía a propósito: aquí tu código escribe el estado de carga, el error, el vacío o las tarjetas -->
+    </section>
+  </main>
+
+  <footer class="mt-12 border-t border-slate-200 py-6 text-center text-sm text-slate-500">
+    Datos: <a href="https://rickandmortyapi.com" class="underline hover:text-indigo-600">The Rick and Morty API</a>
+  </footer>
+
+  <!--
+    MODELOS PARA COPIAR A TU JAVASCRIPT (no los borres: te sirven de referencia)
+
+    1) Tarjeta de un episodio NO visto (datos del episodio 1):
+    <article class="flex flex-col gap-2 rounded-2xl bg-white p-5 shadow">
+      <span class="w-fit rounded-full bg-indigo-100 px-2.5 py-0.5 text-xs font-semibold text-indigo-700">S01E01</span>
+      <h3 class="text-lg font-bold">Pilot</h3>
+      <p class="text-sm text-slate-500">Emitido: December 2, 2013</p>
+      <p class="text-sm text-slate-500">19 personajes</p>
+      <button type="button" data-id="1"
+              class="mt-auto rounded-lg bg-indigo-600 py-2 font-semibold text-white hover:bg-indigo-700">
+        Marcar como visto
+      </button>
+    </article>
+
+    2) Diferencias de una tarjeta VISTA:
+       article  → agrega:     ring-2 ring-emerald-500
+       button   → cambia      bg-indigo-600 hover:bg-indigo-700  por  bg-emerald-600 hover:bg-emerald-700
+       texto    → cambia      Marcar como visto  por  ✓ Visto
+
+    3) Estado de carga:
+    <p class="col-span-full rounded-2xl bg-white p-8 text-center text-slate-500">Cargando episodios…</p>
+
+    4) Estado de error (el mensaje debe incluir el código HTTP o el motivo del fallo):
+    <div class="col-span-full rounded-2xl bg-rose-50 p-8 text-center text-rose-700">
+      <p>No se pudieron cargar los episodios (HTTP 500).</p>
+      <button type="button" id="btn-reintentar"
+              class="mt-4 rounded-lg bg-rose-600 px-4 py-2 font-semibold text-white hover:bg-rose-700">
+        Reintentar
+      </button>
+    </div>
+
+    5) Estado vacío:
+    <p class="col-span-full rounded-2xl bg-white p-8 text-center text-slate-500">Ningún episodio coincide con la búsqueda.</p>
+  -->
+
+  <script type="module" src="js/app.js"></script>
+</body>
+</html>
