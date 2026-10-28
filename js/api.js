@@ -15,6 +15,7 @@ export const pedirJSON = async (url) => {
     };
     
     const datos = await respuesta.json();
+    console.log('R1 - Datos recibidos:', datos);
 
     return datos;
   
@@ -24,5 +25,6 @@ export const pedirJSON = async (url) => {
 export const obtenerEpisodios = async () => {
 
   const datos = await pedirJSON(URL_EPISODIOS);
+  console.log('Respuesta completa de la API:', datos);
   return datos.results;
 };
