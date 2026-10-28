@@ -29,5 +29,9 @@ export const contarPersonajes = (lista) => {
 // R6 · Si id está en ids, devuelve un array NUEVO sin él; si no está, un array NUEVO con él.
 // No modifiques el array que recibes.
 export const alternarId = (ids, id) => {
-  // TODO
+  if (ids.includes(id)) {
+    return ids.filter((idGuardado) => idGuardado !== id);
+  }
+
+  return [...ids, id];
 };
