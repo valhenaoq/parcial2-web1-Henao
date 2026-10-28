@@ -21,7 +21,9 @@ export const filtrarEpisodios = (lista, { texto, temporada }) => {
 // R5 · Suma la cantidad de personajes (characters.length) de todos los episodios de la lista.
 // Usa reduce.
 export const contarPersonajes = (lista) => {
-  // TODO
+  return lista.reduce((total, episodio) => {
+    return total + episodio.characters.length;
+  }, 0);
 };
 
 // R6 · Si id está en ids, devuelve un array NUEVO sin él; si no está, un array NUEVO con él.
