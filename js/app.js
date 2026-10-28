@@ -104,7 +104,22 @@ const cargar = async () => {
 };
 
 // R4 · Eventos del buscador (input), del select (change) y del formulario (Enter NO recarga).
-// TODO
+// Cuando el usuario escribe en el buscador.
+inputBusqueda.addEventListener('input', () => {
+  filtros.texto = inputBusqueda.value;
+  render();
+});
+
+// Cuando el usuario cambia la temporada.
+selectTemporada.addEventListener('change', () => {
+  filtros.temporada = selectTemporada.value;
+  render();
+});
+
+// Evita que presionar Enter recargue la página.
+formFiltros.addEventListener('submit', (evento) => {
+  evento.preventDefault();
+});
 
 // R6 · UN solo listener en #lista (delegación) que atienda el botón de cada tarjeta
 // y también el botón Reintentar.
